@@ -17,7 +17,6 @@
 [ $# -eq 0 ] && { echo "Usage: embed-tikzcsv file.tex..."; exit 1; }
 
 for tex; do
-	echo $tex
 	[ -f "$tex" ] || continue
 
 	case "$tex" in
@@ -47,4 +46,6 @@ for tex; do
 	[ -s "$csvtex" ] || { rm -f "$csvtex"; continue; }
 
 	cmp -s "$tex" "$csvtex" && rm -f "$csvtex"
+
+	echo "$csvtex generated"
 done
